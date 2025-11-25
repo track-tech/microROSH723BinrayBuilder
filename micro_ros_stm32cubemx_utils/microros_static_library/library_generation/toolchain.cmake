@@ -11,6 +11,9 @@ SET(CMAKE_CXX_COMPILER_WORKS 1 CACHE INTERNAL "")
 set(FLAGS $ENV{RET_CFLAGS} CACHE STRING "" FORCE)
 set(MICROROSFLAGS "-DCLOCK_MONOTONIC=0 -D'__attribute__(x)='" CACHE STRING "" FORCE)
 
+# SET HERE YOUR BUILDING FLAGS
+set(FLAGS "-O2 -ffunction-sections -fdata-sections -fno-exceptions -mcpu=cortex-m7 -mfpu=fpv5-d16 -mfloat-abi=hard -nostdlib -mthumb --param max-inline-insns-single=500 -D'RCUTILS_LOG_MIN_SEVERITY=RCUTILS_LOG_MIN_SEVERITY_NONE'" CACHE STRING "" FORCE)
+
 set(CMAKE_C_FLAGS_INIT "-std=c11 ${FLAGS} ${MICROROSFLAGS} " CACHE STRING "" FORCE)
 set(CMAKE_CXX_FLAGS_INIT "-std=c++14 ${FLAGS} -fno-rtti ${MICROROSFLAGS} " CACHE STRING "" FORCE)
 
